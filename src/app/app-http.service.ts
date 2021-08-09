@@ -10,18 +10,9 @@ export class AppHttpService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public createPost(): any {
-  }
-
   public readAllPosts(): Observable<Array<Post>> {
     const r = this.httpClient.get<any>('https://jsonplaceholder.typicode.com/posts');
     return r.pipe(catchError(this.handleError));
-  }
-
-  public updatePostBy(id: number): any {
-  }
-
-  public deletePost(id: number): any {
   }
 
   private handleError(error: any): any {
