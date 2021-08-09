@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Post} from '../../model/post';
 
 @Component({
@@ -11,13 +11,16 @@ export class PostComponent implements OnInit {
   @Input() public post: Post;
   @Output() public deletePost: EventEmitter<Post> = new EventEmitter<Post>();
 
-  public limit: number;
+  public hideNotification: boolean;
 
   constructor() {
-    this.limit = 3;
+    this.hideNotification = false;
   }
 
   public ngOnInit(): void {
+    setTimeout(() => {
+      this.hideNotification = true;
+    }, 1000);
   }
 
   public delete(post: Post): void {

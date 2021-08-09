@@ -1,18 +1,18 @@
 <span class="action" (click)="createUser()"><i class="fas fa-plus"></i></span>
-<span class="action" (click)="enableFiltering()"><i class="fas fa-filter"></i></span>
+<span class="action" (click)="toggleFiltering()"><i class="fas fa-filter"></i></span>
 
 <table id="users">
   <tr>
     <th>
       {{userIdColumnHeaderTxt}}
-      <ng-container *ngIf="ef">
+      <ng-container *ngIf="isFilterEnabled">
         <br>
         <input type="text" [(ngModel)] = userId>
       </ng-container>
     </th>
     <th>
       {{nrOfPostsColumnHeaderTxt}}
-      <ng-container *ngIf="ef">
+      <ng-container *ngIf="isFilterEnabled">
         <br>
         <input type="text" [(ngModel)] = nrOfPosts>
       </ng-container>
@@ -26,9 +26,17 @@
     <td>{{user?.posts?.length}}</td>
     <td>
       <div class="action-bar">
-        <span class="action"><i class="fas fa-pencil" (click)="update(user)"></i></span>
-        <span class="action"><i class="fas fa-trash" (click)="delete(user)"></i></span>
+        <span class="action"><i class="fas fa-pencil" (click)="preEdit(user)"></i></span>
+        <span class="action"><i class="fas fa-trash" (click)="preDelete(user)"></i></span>
       </div>
     </td>
   </tr>
 </table>
+
+<app-dialog [display]="editUser" (closeDialog)="editUser = false" (actionDialog)="deleteAllPPostsFor(selectedUser)">
+  <h1 style="padding: 1em">Delete all posts for user {{selectedUser?.userId}} ?</h1>
+</app-dialog>
+
+<app-dialog [display]="deleteUser" (closeDialog)="deleteUser = false" (actionDialog)="delete(selectedUser)">
+  <h1 style="padding: 1em">Delete selected user {{selectedUser?.userId}} ?</h1>
+</app-dialog>

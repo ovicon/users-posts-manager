@@ -1,0 +1,9 @@
+<div class="dialog" *ngIf="display === true">
+  <div class="content">
+    <ng-content></ng-content>
+    <div class="post-footer">
+      <button (click)="ok()">OK</button>
+      <button (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>

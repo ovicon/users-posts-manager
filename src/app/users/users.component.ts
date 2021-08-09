@@ -15,9 +15,12 @@ export class UsersComponent implements OnInit {
   public userIdColumnHeaderTxt;
   public nrOfPostsColumnHeaderTxt;
   public actionsColumnHeaderTxt;
-  public ef: boolean;
+  public isFilterEnabled: boolean;
   public userId: string;
   public nrOfPosts: string;
+  public selectedUser: User;
+  public editUser = false;
+  public deleteUser = false;
 
   public constructor(private usersService: UsersService) {}
 
@@ -55,19 +58,32 @@ export class UsersComponent implements OnInit {
   }
 
   public select(user: User): void {
+    this.selectedUser = user;
     this.selected.emit(user);
   }
 
+  public preDelete(user: User): void {
+    this.selectedUser = user;
+    this.deleteUser = !this.deleteUser;
+  }
+
   public delete(user: User): void {
+    this.selectedUser = null;
+    this.deleteUser = !this.deleteUser;
     this.users = this.users.filter(u => u.userId !== user.userId);
     this.select(null);
   }
 
-  public update(user: User): void {
-    alert('todo');
+  public preEdit(user: User): void {
+    this.selectedUser = user;
+    this.editUser = !this.editUser;
   }
 
-  public enableFiltering(): void {
-    this.ef = !this.ef;
+  public toggleFiltering(): void {
+    this.isFilterEnabled = !this.isFilterEnabled;
+  }
+
+  public deleteAllPPostsFor(selectedUser: User): void {
+    this.selectedUser.posts = [];
   }
 }

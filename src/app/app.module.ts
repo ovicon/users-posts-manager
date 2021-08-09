@@ -7,6 +7,8 @@ import {CommonModule} from '@angular/common';
 import {AppHttpService} from './app-http.service';
 import {UsersModule} from './users/users.module';
 import {PostsModule} from './posts/posts.module';
+import {LoadingModule} from './common/loading/loading.module';
+import {DialogModule} from './common/dialog/dialog.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import {PostsModule} from './posts/posts.module';
     CommonModule,
     HttpClientModule,
     UsersModule,
-    PostsModule
+    PostsModule,
+    LoadingModule,
+    DialogModule
   ],
   providers: [
     AppHttpService

@@ -4,6 +4,7 @@ import {UsersComponent} from './users.component';
 import {UsersService} from './users.service';
 import {FormsModule} from '@angular/forms';
 import {FilterUsers} from './users-filter.pipe';
+import {DialogModule} from '../common/dialog/dialog.module';
 
 
 
@@ -18,7 +19,8 @@ import {FilterUsers} from './users-filter.pipe';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    DialogModule
   ],
   exports: [
     UsersComponent

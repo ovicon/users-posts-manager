@@ -16,10 +16,6 @@
     }
   }
 
-  .post-image {
-    margin: auto;
-  }
-
   .post-content {
     padding: 0 1em 1em 1em;
 
@@ -60,8 +56,7 @@
   }
 }
 
-.button-get-more-posts {
-  height: 3em;
-  width: calc(100% - 2em);
-  margin: 1em;
+.post-new {
+  border: 1px solid #04AA6D;
+  font-style: italic;
 }
