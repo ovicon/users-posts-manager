@@ -25,5 +25,5 @@
 </ng-template>
 
 <app-dialog [display]="deletePost" (closeDialog)="deletePost = false" (actionDialog)="delete(selectedPost)">
-  <h1 style="padding: 1em">Delete selected post {{selectedPost?.title}} ?</h1>
+  <h1 style="padding: 1em">Delete selected post ?<br><br> <i>"{{selectedPost?.title}}"</i></h1>
 </app-dialog>

@@ -7,8 +7,6 @@ import {PostsReversePipe} from './posts-reverse.pipe';
 import {LoadingModule} from '../common/loading/loading.module';
 import {DialogModule} from '../common/dialog/dialog.module';
 
-
-
 @NgModule({
   declarations: [
     PostsComponent,

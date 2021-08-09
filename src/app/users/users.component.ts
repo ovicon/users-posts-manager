@@ -52,9 +52,8 @@ export class UsersComponent implements OnInit {
     const u = new User();
     u.userId = ++tempUserId;
     u.posts = [];
-    setTimeout(() => {
-      this.users.push(u);
-    });
+    this.users.push(u);
+    this.usersService.create(u);
   }
 
   public select(user: User): void {
@@ -83,7 +82,7 @@ export class UsersComponent implements OnInit {
     this.isFilterEnabled = !this.isFilterEnabled;
   }
 
-  public deleteAllPPostsFor(selectedUser: User): void {
+  public edit(selectedUser: User): void {
     this.selectedUser.posts = [];
   }
 }

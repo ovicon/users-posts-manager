@@ -33,10 +33,10 @@
   </tr>
 </table>
 
-<app-dialog [display]="editUser" (closeDialog)="editUser = false" (actionDialog)="deleteAllPPostsFor(selectedUser)">
-  <h1 style="padding: 1em">Delete all posts for user {{selectedUser?.userId}} ?</h1>
+<app-dialog [display]="editUser" (closeDialog)="editUser = false" (actionDialog)="edit(selectedUser)">
+  <h1 style="padding: 1em">Delete all posts for User ID ?<br><br><i>"{{selectedUser?.userId}}"</i></h1>
 </app-dialog>
 
 <app-dialog [display]="deleteUser" (closeDialog)="deleteUser = false" (actionDialog)="delete(selectedUser)">
-  <h1 style="padding: 1em">Delete selected user {{selectedUser?.userId}} ?</h1>
+  <h1 style="padding: 1em">Delete selected User ID ?<br><br><i>"{{selectedUser?.userId}}"</i></h1>
 </app-dialog>

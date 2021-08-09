@@ -45,4 +45,11 @@ export class UsersService {
 
     return users;
   }
+
+  public create(u: User): void {
+    const s = this.appService.createUser(u).subscribe(value => {
+      console.log('User created');
+      s.unsubscribe();
+    });
+  }
 }

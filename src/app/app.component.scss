@@ -2,12 +2,13 @@
   display: block;
   margin: 0 1em;
   height: 100vh;
-}
-.grid-container {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-.grid-item {
-  overflow: auto;
+
+  .grid-container {
+    height: calc(100vh - 8em);
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .grid-item {
+    overflow: auto;
+  }
 }

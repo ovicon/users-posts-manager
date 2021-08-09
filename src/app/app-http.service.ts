@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Post} from './model/post';
+import {User} from './model/user';
 
 @Injectable()
 export class AppHttpService {
@@ -25,5 +26,10 @@ export class AppHttpService {
 
   private handleError(error: any): any {
     return throwError('Error connecting to server: ' + error.message);
+  }
+
+  public createUser(user: User): Observable<User> {
+    const r = this.httpClient.post<any>('https://jsonplaceholder.typicode.com/users', user);
+    return r.pipe(catchError(this.handleError));
   }
 }
