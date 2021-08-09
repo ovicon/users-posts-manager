@@ -5,22 +5,22 @@ import {catchError} from 'rxjs/operators';
 import {Post} from './model/post';
 
 @Injectable()
-export class AppService {
+export class AppHttpService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public create(): any {
+  public createPost(): any {
   }
 
-  public read(): Observable<Array<Post>> {
+  public readAllPosts(): Observable<Array<Post>> {
     const r = this.httpClient.get<any>('https://jsonplaceholder.typicode.com/posts');
     return r.pipe(catchError(this.handleError));
   }
 
-  public update(): any {
+  public updatePostBy(id: number): any {
   }
 
-  public delete(): any {
+  public deletePost(id: number): any {
   }
 
   private handleError(error: any): any {

@@ -1,29 +1,66 @@
-#posts {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#posts td, #posts th {
+.post {
   border: 1px solid #ddd;
-  padding: 8px;
+  margin: 1em;
+
+  .post-header {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    .fas {
+      position: relative;
+      float: right;
+    }
+  }
+
+  .post-image {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
+  .post-content {
+    padding: 0 1em 1em 1em;
+
+    .post-content-title {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: .5em;
+    }
+
+    .post-content-body {
+      width: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .post-content-body-expanded {
+      white-space: normal;
+    }
+  }
+
+  .post-footer {
+    color: white;
+    display: grid;
+    grid-template-columns: 33.33% 33.34% 33.33%;
+    background: #04AA6D;
+
+    .post-footer-item {
+      margin: auto;
+      width: 0%;
+      padding: 10px;
+      &:hover {
+        color: black;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
-#posts tr:nth-child(even){background-color: #f2f2f2;}
-
-#posts tr:hover {background-color: #ddd; cursor: pointer;}
-
-#posts th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-
-.fas {
-  width: 3em !important;
-  height: 3em !important;
-  margin: .5em !important;
-  padding: .5em !important;
+.loading {
+  position: relative;
+  top: 33vh;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }

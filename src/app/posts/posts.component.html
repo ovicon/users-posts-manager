@@ -1,28 +1,42 @@
-<h1>Posts {{ user  ? ' for user with ID: ' + user.userId : '' }}</h1>
+<ng-container *ngIf="user else loading">
 
-<ng-container *ngIf="!user">
-  Select user
-</ng-container>
+  <div class="post" *ngFor="let post of user?.posts | limitPostsTo: limit">
+    <div class="post-header">
+      <i class="far fa-user-circle"> {{post?.userId}}</i>
+      <div><i class="fas fa-ellipsis-h"></i></div>
+    </div>
+    <div class="post-image">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           height="300px" width="300px"
+           version="1.1"
+           viewBox="-300 -300 600 600"
+           font-family="Bitstream Vera Sans,Liberation Sans, Arial, sans-serif"
+           font-size="72"
+           text-anchor="middle" >
 
-<ng-container *ngIf="user">
-
-  <table id="posts">
-    <tr>
-      <th>User ID</th>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let post of user?.posts | limit: limit">
-      <td>{{post?.userId}}</td>
-      <td>{{post?.id}}</td>
-      <td>{{post?.title}}</td>
-      <td>{{post?.body}}</td>
-      <td><button>Expand</button></td>
-    </tr>
-  </table>
+        <circle stroke="#AAA" stroke-width="10" r="280" fill="#FFF"/>
+        <text style="fill:#444;">
+          <tspan x="0" y="-8">NO IMAGE</tspan><tspan x="0" y="80">AVAILABLE</tspan>
+        </text>
+      </svg>
+    </div>
+    <div class="post-content">
+      <div class="post-content-title"><b>{{post?.title}}</b></div>
+      <div class="post-content-body">{{post?.body}}</div>
+    </div>
+    <div class="post-footer">
+      <i class="far fa-thumbs-up post-footer-item"></i>
+      <i class="far fa-comment post-footer-item"></i>
+      <i class="far fa-share post-footer-item"></i>
+    </div>
+  </div>
 
   <button (click)="onGetMorePosts()">{{moreTxt}}</button>
 
 </ng-container>
+
+<ng-template #loading>
+  <div class="loading">
+    Select user to view posts
+  </div>
+</ng-template>

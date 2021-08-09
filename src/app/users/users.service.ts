@@ -1,20 +1,48 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable, of, throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {Post} from '../model/post';
-import {AppService} from '../app.service';
+import {AppHttpService} from '../app-http.service';
 import {User} from '../model/user';
 
 @Injectable()
 export class UsersService {
 
-  constructor(private appService: AppService) { }
+  constructor(public appService: AppHttpService) { }
 
   public getUsers(): Observable<Array<User>> {
-    this.appService.read().subscribe(posts => {
+    return this.appService.readAllPosts().pipe(map(posts => {
+      return this.getUsersFrom(posts);
+    }));
+  }
 
+  private getUsersFrom(posts: Array<Post>): Array<User> {
+    const users = new Array<User>();
+    const userIds = new Set<number>();
+
+    // 1 create user list
+    posts.forEach(post => userIds.add(post.userId));
+    userIds.forEach(userId => {
+      const user = new User();
+      user.userId = userId;
+      user.posts = [];
+      users.push(user);
     });
-    return of(posts);
+
+    // 2 fill with posts
+    users.forEach(user => {
+      posts.forEach(post => {
+        if (user.userId === post.userId) {
+          const p = new Post();
+          p.userId = post.userId;
+          p.id = post.id;
+          p.title = post.title;
+          p.body = post.body;
+          user.posts.push(p);
+        }
+      });
+    });
+
+    return users;
   }
 }

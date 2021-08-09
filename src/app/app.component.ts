@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from './model/user';
 
 @Component({
@@ -6,6 +6,13 @@ import {User} from './model/user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public user: User;
+  public isLoaded: any;
+
+  public ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoaded = true;
+    }, 1000);
+  }
 }

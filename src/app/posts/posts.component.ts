@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Post} from '../model/post';
-import {AppService} from '../app.service';
+import {AppHttpService} from '../app-http.service';
 import {User} from '../model/user';
 
 @Component({
@@ -14,14 +14,23 @@ export class PostsComponent implements OnInit, OnChanges {
 
   public posts: Array<Post>;
   public limit = 3;
+  public userIdColumnHeaderTxt;
+  public idColumnHeaderTxt;
+  public titleColumnHeaderTxt;
+  public bodyColumnHeaderTxt;
   public moreTxt = 'Get more posts';
 
-  public constructor(private appService: AppService) {}
+  public constructor(private appService: AppHttpService) {}
 
   public ngOnInit(): void {
-    this.appService.read().subscribe((posts: Array<any>) => {
-      this.posts = posts;
-    });
+    this.getTranslations();
+  }
+
+  private getTranslations(): void {
+    this.userIdColumnHeaderTxt = 'User ID';
+    this.idColumnHeaderTxt = 'ID';
+    this.titleColumnHeaderTxt = 'Title';
+    this.bodyColumnHeaderTxt = 'Body';
   }
 
   public onGetMorePosts(): void {

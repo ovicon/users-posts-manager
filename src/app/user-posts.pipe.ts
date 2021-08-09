@@ -1,6 +1,6 @@
-import {Post} from '../model/post';
+import {Post} from './model/post';
 import {Pipe} from '@angular/core';
-import {User} from '../model/user';
+import {User} from './model/user';
 
 @Pipe({ name: 'userPosts' })
 export class UserPostsPipe {

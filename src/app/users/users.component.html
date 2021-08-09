@@ -1,21 +1,33 @@
-<h1>Users</h1>
+<span class="action" (click)="createUser()"><i class="fas fa-plus"></i></span>
+<span class="action" (click)="enableFiltering()"><i class="fas fa-filter"></i></span>
 
-<span class="action"><i class="fas fa-plus"></i></span>
-
-<table id="posts">
+<table id="users">
   <tr>
-    <th>User ID</th>
-    <th>Number of posts</th>
-    <th>Actions</th>
+    <th>
+      {{userIdColumnHeaderTxt}}
+      <ng-container *ngIf="ef">
+        <br>
+        <input type="text" [(ngModel)] = userId>
+      </ng-container>
+    </th>
+    <th>
+      {{nrOfPostsColumnHeaderTxt}}
+      <ng-container *ngIf="ef">
+        <br>
+        <input type="text" [(ngModel)] = nrOfPosts>
+      </ng-container>
+    </th>
+    <th>
+      {{actionsColumnHeaderTxt}}
+    </th>
   </tr>
-  <tr *ngFor="let user of users">
+  <tr *ngFor="let user of users | filterUsers: userId: nrOfPosts; let idx = index" (click)="select(user)">
     <td>{{user?.userId}}</td>
     <td>{{user?.posts?.length}}</td>
     <td>
       <div class="action-bar">
-        <span class="action"><i class="fas fa-pencil" (click)="onSelect(user)"></i></span>
-        <span class="action"><i class="fas fa-eye" (click)="onSelect(user)"></i></span>
-        <span class="action"><i class="fas fa-trash" (click)="onDelete(user)"></i></span>
+        <span class="action"><i class="fas fa-pencil" (click)="update(user)"></i></span>
+        <span class="action"><i class="fas fa-trash" (click)="delete(user)"></i></span>
       </div>
     </td>
   </tr>
