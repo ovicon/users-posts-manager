@@ -5,17 +5,11 @@
   <tr>
     <th>
       {{userIdColumnHeaderTxt}}
-      <ng-container *ngIf="isFilterEnabled">
-        <br>
-        <input type="text" [(ngModel)] = userId>
-      </ng-container>
+      <ng-container *ngIf="isFilterEnabled" [ngTemplateOutlet]="userIdFilter"></ng-container>
     </th>
     <th>
       {{nrOfPostsColumnHeaderTxt}}
-      <ng-container *ngIf="isFilterEnabled">
-        <br>
-        <input type="text" [(ngModel)] = nrOfPosts>
-      </ng-container>
+      <ng-container *ngIf="isFilterEnabled" [ngTemplateOutlet]="nrOfPostsFilter"></ng-container>
     </th>
     <th>
       {{actionsColumnHeaderTxt}}
@@ -33,10 +27,21 @@
   </tr>
 </table>
 
+<ng-template #userIdFilter>
+  <br>
+  <input type="text" [(ngModel)] = userId>
+</ng-template>
+
+<ng-template #nrOfPostsFilter>
+  <br>
+  <input type="text" [(ngModel)] = nrOfPosts>
+</ng-template>
+
+
 <app-dialog [display]="editUser" (closeDialog)="editUser = false" (actionDialog)="edit(selectedUser)">
-  <h1 style="padding: 1em">Delete all posts for User ID ?<br><br><i>"{{selectedUser?.userId}}"</i></h1>
+  <h1 style="padding: 1em">{{'Delete all posts for User ID ?' | uppercase}}<br><br><i>"{{selectedUser?.userId}}"</i></h1>
 </app-dialog>
 
 <app-dialog [display]="deleteUser" (closeDialog)="deleteUser = false" (actionDialog)="delete(selectedUser)">
-  <h1 style="padding: 1em">Delete selected User ID ?<br><br><i>"{{selectedUser?.userId}}"</i></h1>
+  <h1 style="padding: 1em">{{'Delete selected User ID ?' | uppercase}}<br><br><i>"{{selectedUser?.userId}}"</i></h1>
 </app-dialog>

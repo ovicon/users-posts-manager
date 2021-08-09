@@ -1,15 +1,8 @@
 <ng-container *ngIf="user else loading">
-  <ng-cotainer *ngIf="user?.posts?.length > 0 else noPostsAvailable">
+  <ng-container *ngIf="user?.posts?.length > 0 else noPostsAvailable">
     <button class="button-get-more-posts" (click)="onGetNextPost()">{{moreTxt}}</button>
-    <app-post [post]="post" *ngFor="let post of user?.posts | limitPostsTo: limit | postsReverse; let idx = index" (deletePost)="preDelete($event)">
-      <ng-container new>
-        New post from user {{user.userId}} at {{nowDate}}
-      </ng-container>
-      <ng-container loading>
-        <app-loading></app-loading>
-      </ng-container>
-    </app-post>
-  </ng-cotainer>
+    <ng-container [ngTemplateOutlet]="post"></ng-container>
+  </ng-container>
 </ng-container>
 
 <ng-template #loading>
@@ -22,6 +15,17 @@
   <div class="loading">
     No posts available for selected user
   </div>
+</ng-template>
+
+<ng-template #post>
+  <app-post [post]="post" *ngFor="let post of user?.posts | limitPostsTo: limit | postsReverse; let idx = index" (deletePost)="preDelete($event)">
+    <ng-container new>
+      New post from user {{user.userId}} at {{nowDate}}
+    </ng-container>
+    <ng-container loading>
+      <app-loading></app-loading>
+    </ng-container>
+  </app-post>
 </ng-template>
 
 <app-dialog [display]="deletePost" (closeDialog)="deletePost = false" (actionDialog)="delete(selectedPost)">
