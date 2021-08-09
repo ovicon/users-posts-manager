@@ -3,7 +3,7 @@ import {Pipe} from '@angular/core';
 import {User} from '../model/user';
 
 @Pipe({ name: 'userPosts' })
-export class UserPosts {
+export class UserPostsPipe {
   public transform(posts: Array<Post>): Array<User> {
     const users = new Array<User>();
     const userIds = new Set<number>();

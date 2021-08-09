@@ -4,9 +4,11 @@ import {User} from '../model/user';
 
 @Pipe({ name: 'limit' })
 export class LimitPipe {
-  public transform(posts: Array<Post>): Array<Post> {
-    const r =  posts.filter((value, index) => {
-      if (index < 3) {
+  public transform(posts: Array<Post>, limit: number): Array<Post> {
+    debugger;
+    let r = [];
+    r = posts.filter((value, index) => {
+      if (index < limit) {
         return value;
       }
     });

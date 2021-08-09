@@ -1,0 +1,11 @@
+:host {
+  height: 100vh;
+}
+.grid-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 33.33% 66.67%;
+}
+.grid-item {
+  overflow: auto;
+}
