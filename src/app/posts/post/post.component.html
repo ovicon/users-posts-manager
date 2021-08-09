@@ -1,0 +1,30 @@
+<div class="post">
+  <div class="post-header">
+    <i class="far fa-user-circle"> {{post?.userId}}</i>
+    <div>
+      <!--      <i class="fas fa-ellipsis-h"></i>-->
+      <i class="fas fa-trash post-header-delete" (click)="delete(post)"></i>
+    </div>
+  </div>
+  <div class="post-image">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         height="300px" width="300px"
+         version="1.1"
+         viewBox="-300 -300 600 600"
+         font-family="Bitstream Vera Sans,Liberation Sans, Arial, sans-serif"
+         font-size="72"
+         text-anchor="middle" >
+
+      <circle stroke="#AAA" stroke-width="10" r="280" fill="#FFF"/>
+      <text style="fill:#444;">
+        <tspan x="0" y="-8">NO IMAGE</tspan><tspan x="0" y="80">AVAILABLE</tspan>
+      </text>
+    </svg>
+  </div>
+  <div class="post-content">
+    <div class="post-content-title"><b>{{post?.title}}</b></div>
+    <div class="post-content-body">{{post?.body}}</div>
+  </div>
+  <ng-content>
+  </ng-content>
+</div>

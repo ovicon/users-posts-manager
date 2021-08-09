@@ -1,66 +1,41 @@
-.post {
-  border: 1px solid #ddd;
-  margin: 1em;
-
-  .post-header {
-    padding: 1em;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    .fas {
-      position: relative;
-      float: right;
-    }
-  }
-
-  .post-image {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-  }
-
-  .post-content {
-    padding: 0 1em 1em 1em;
-
-    .post-content-title {
-      font-weight: bold;
-      font-size: 1.5em;
-      margin-bottom: .5em;
-    }
-
-    .post-content-body {
-      width: auto;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .post-content-body-expanded {
-      white-space: normal;
-    }
-  }
-
-  .post-footer {
-    color: white;
-    display: grid;
-    grid-template-columns: 33.33% 33.34% 33.33%;
-    background: #04AA6D;
-
-    .post-footer-item {
-      margin: auto;
-      width: 0%;
-      padding: 10px;
-      &:hover {
-        color: black;
-        cursor: pointer;
-      }
-    }
-  }
-}
-
 .loading {
   position: relative;
   top: 33vh;
   margin: auto;
   width: 50%;
   padding: 10px;
+}
+
+.post-footer-odd {
+  color: white;
+  display: grid;
+  grid-template-columns: 33.33% 33.34% 33.33%;
+  background: #ddd;
+
+  .post-footer-item {
+    margin: auto;
+    width: 0%;
+    padding: 10px;
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
+  }
+}
+
+.post-footer-even {
+  color: black;
+  display: grid;
+  grid-template-columns: 33.33% 33.34% 33.33%;
+  background: white;
+
+  .post-footer-item {
+    margin: auto;
+    width: 0%;
+    padding: 10px;
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
+  }
 }

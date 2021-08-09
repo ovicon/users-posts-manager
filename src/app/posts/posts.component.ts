@@ -37,10 +37,14 @@ export class PostsComponent implements OnInit, OnChanges {
     if (this.limit > this.user.posts.length) {
       alert('No more posts');
     }
-    this.limit += 3;
+    this.limit += 1;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.limit = 3;
+    this.limit = 2;
+  }
+
+  public deletePost(post: Post): void {
+    this.user.posts = this.user.posts.filter(p => p.id !== post.id);
   }
 }
